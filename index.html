@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>EShopper - Bootstrap Shop Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    
+    <link href="lib copy/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+
+    <!-- Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+
+    <!-- Link Swiper's CSS -->
+   
+
+    <link href="css/style.css" rel="stylesheet">
+    
+ 
+</head>
+
+<body>
+
+    <!-- Topbar Start -->
+    <div id="root">
+
+        <div class="container-fluid">
+            <div class="row bg-secondary py-2 px-xl-5">
+                <div class="col-lg-6 d-none d-lg-block ">
+                    <div class="d-inline-flex align-items-center">
+                        <a class="text-dark" href="">FAQs</a>
+                        <span class="text-muted px-2">|</span>
+                        <a class="text-dark" href="">Help</a>
+                        <span class="text-muted px-2">|</span>
+                        <a class="text-dark" href="">Support</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center text-lg-right">
+                    <div class="d-inline-flex align-items-center">
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a class="text-dark pl-2" href="">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class=" bg-white row align-items-center custom-top-nav py-3 px-xl-5 justify-content-between">
+                <div class="col-lg-2 d-none d-lg-block">
+                    <a href="" class="text-decoration-none">
+                        <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                                class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+                    </a>
+                </div>
+                <div class="col-lg-5 relative col-9 text-left">
+                    <form action="">
+                        <div class="input-group">
+                            <input type="text" placeholder="Cerca prodotti..." v-on:keyup="onChangeCerca($event)"
+                                class="form-control">
+                            <div class="input-group-append">
+                                <span class="input-group-text bg-transparent text-primary">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div @mouseleave="hoverOut"
+                        v-bind:class="{ 'show-search': prodottiCerca.length, 'd-none-custom': classes === 1 }"
+                        class="dropdown_menu-search">
+                        
+                        <div class="viewed">
+                            <div class="container-fluid offer pt-5">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="bbb_viewed_title_container ">
+                                            <h3 class="bbb_viewed_title">Recently Viewed</h3>
+                                            <div class="bbb_viewed_nav_container">
+                                                <div class="bbb_viewed_nav bbb_viewed_prev"><i class="fas fa-chevron-left"></i>
+                                                </div>
+                                                <div class="bbb_viewed_nav bbb_viewed_next"><i class="fas fa-chevron-right"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+            
+                                        <div class="bbb_viewed_slider_container">
+            
+            
+            
+                                            <div  class="owl-carousel owl-theme bbb_viewed_slider">
+            
+                                                <div class="owl-item"  v-for="(prodotto , index) in prodottiCerca">
+                                                    <div 
+                                                        class="bbb_viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                                                        <div class="bbb_viewed_image">
+                                                           <img
+                                                                src="prodotto.images[0]"
+                                                                alt=""></div>
+                                                        <div class="bbb_viewed_content text-center">
+                                                            <div class="bbb_viewed_price">₹12225<span>₹13300</span></div>
+                                                            <div class="bbb_viewed_name"><a href="#">{{prodotto.title}}</a></div>
+                                                        </div>
+                                                        <ul class="item_marks">
+                                                            <li class="item_mark item_discount">-25%</li>
+                                                            <li class="item_mark item_new">new</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+            
+            
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="col-lg-4 col-3 wrapper-login ">
+                    <div class=" wrapper-icone">
+                        <i class="fa fa-user"></i>
+                        <div class="side-icona">
+                            <span class="side-icona text-dark">Your Account</span>
+                            <span class="side-icona text-secondary">Hello! Signin</span>
+                        </div>
+
+                    </div>
+                    <div class="wrapper-icone">
+                        <i class="fa fa-shopping-bag"></i>
+                        <div>
+                            <div class="side-icona">
+                                <span class="text-dark">My Cart</span>
+                                <span class=" text-secondary">0</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Topbar End -->
+
+
+
+        <!-- Navbar Start -->
+       
+
+            <div class="row  border-top px-xl-5">
+                <div class="col-lg-3 d-none d-lg-block">
+                    <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100"
+                        data-toggle="collapse" href="#navbar-vertical"
+                        style="height: 65px; margin-top: -1px; padding: 0 30px;">
+                        <h6 style="text-transform:uppercase"class=" text-dark m-0">Categories</h6>
+                        <i style="color:black" class="fa fa-bars "></i>
+                    </a>
+              
+                </div>
+
+                <div class="col-lg-9">
+
+                    <nav class="navbar custom-navbar-mobile navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                        <a href="" class="text-decoration-none d-block d-lg-none">
+                            <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                                    class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+                        </a>
+                        <button type="button" class="navbar-toggler hamburger-custom" data-toggle="collapse"
+                            data-target="#navbarCollapse">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                            <div class="navbar-nav mr-auto py-0">
+                                <a href="index.html" class="nav-item nav-link active custom-link-after">Home</a>
+                                <a href="shop.html" class="nav-item nav-link custom-link-after">Shop</a>
+                                <div class="nav-item nav-link dropdown-custom dropdown-4 custom-link-after"
+                                data-toggle="dropdown">
+                                Categorie&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-down "></i>
+
+                                <ul class="dropdown_menu dropdown_menu-4 ">
+<div style="display:flex;">
+                                    <li class="dropdown_item-1 "><img width="150" heigth="150" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"></li>
+                                    <li class="dropdown_item-2  "><img width="150" height="150" src="https://images.unsplash.com/photo-1605406575497-015ab0d21b9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"></li>
+                                </div>
+                                </ul>
+                            </div>
+                                <div class="nav-item nav-link dropdown-custom dropdown-4 custom-link-after"
+                                    data-toggle="dropdown">
+                                    Pages&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-down "></i>
+
+                                    <ul class="dropdown_menu dropdown_menu-4">
+                                        <li class="dropdown_item-1 custom-link-after">Itemasdasdasd 1</li>
+                                        <li class="dropdown_item-2 custom-link-after">Itemasdasdasd 2</li>
+                                        <li class="dropdown_item-3 custom-link-after">Itemasdasd 3</li>
+                                        <li class="dropdown_item-4 custom-link-after">Item asdasdasdasd4</li>
+                                        <li class="dropdown_item-5 custom-link-after">Item asdasdasdasdasddas5</li>
+                                    </ul>
+                                </div>
+
+
+                                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            </div>
+
+                        </div>
+
+
+                        <div class="custom-fader  navbar-nav  flex align-items-center">
+                            <span class="nav-item nav-link custom-h3 text-dark">Best Offer</span>
+                            <div class="first-paragraph" style="min-width:170px">
+                                <span>Test uno due tre</span>
+                            </div>
+                        </div>
+
+
+                    </nav>
+
+         
+                  
+
+
+
+                </div>
+          
+            </div>
+
+
+        <!-- Navbar End -->
+
+
+
+
+
+        <div class=" px-xl-5 container-fluid">
+            <div class="row">
+                <div class=" d-flex flex-column container-fluid offer col-lg-3">
+
+                    <div class="d-flex flex-column ">
+                        <nav class="collapse custom-navbar  show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0"
+                        id="navbar-vertical">
+                        <div class="nav-item nav-link custom-link-after flex justify-content-center dropdown-custom dropdown-custom-side w-full dropdown-4"
+                            data-toggle="dropdown">
+                            Pages&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-down"></i>
+
+                            <ul class="dropdown_menu dropdown_menu-4">
+                                <li class="dropdown_item-1 custom-link-after">Itema sdasdasd 1</li>
+                                <li class="dropdown_item-2 custom-link-after">Itema sdasdasd 2</li>
+                                <li class="dropdown_item-3 custom-link-after">Item asdasd 3</li>
+                                <li class="dropdown_item-4 custom-link-after">Item asdasdasdasd4</li>
+                                <li class="dropdown_item-5 custom-link-after">Item asdasdasdasdasddas5</li>
+                            </ul>
+                        </div>
+
+                        <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
+                            <a href="" class="nav-item nav-link custom-link-after">Shirts</a>
+                            <a href="" class="nav-item nav-link custom-link-after">Jeans</a>
+                            <a href="" class="nav-item nav-link custom-link-after">Swimwear</a>
+                            <a href="" class="nav-item nav-link custom-link-after">Sleepwear</a>
+                            <a href="" class="nav-item nav-link custom-link-after">Sportswear</a>
+                            <a href="" class="nav-item nav-link custom-link-after">Jumpsuits</a>
+                            <a href="" class="nav-item nav-link custom-link-after">Blazers</a>
+                            <a href="" class="nav-item nav-link custom-link-after">Jackets</a>
+                            <a href="" class="nav-item nav-link custom-link-after">Shoes</a>
+
+                        </div>
+
+                    </nav>
+
+                        <div class="mt-4 pb-4">
+                            <div style="padding:12% !important"
+                                class="position-relative bg-secondary text-center text-md-right text-white mb-2 ">
+                                <img class="img-fluid" src="img/offer-1.png" alt="">
+                                <div class="position-relative" style="z-index: 1;">
+                                    <h5 class="text-uppercase text-primary mb-3">20% off the all order</h5>
+                                    <h1 class="mb-4 font-weight-semi-bold">Spring Collection</h1>
+                                    <a href="" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" pb-4">
+                            <div style="padding:12% !important"
+                                class="position-relative bg-secondary text-center text-md-left text-white mb-2 ">
+                                <img src="img/offer-2.png" class="img-fluid" alt="">
+                                <div class="position-relative" style="z-index: 1;">
+                                    <h5 class="text-uppercase text-primary mt-2 mb-3">20% off the all order</h5>
+                                    <h1 class="mb-4 font-weight-semi-bold">Winter Collection</h1>
+                                    <a href="" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Featured Start -->
+                <div class="column  col-lg-9 ">
+
+                    <!-- Featured End -->
+                    <div id="carouselExampleFade" class="carousel slide carousel-fade mt-4" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="https://cdn.pixabay.com/photo/2017/10/24/10/30/business-2884023_960_720.jpg"
+                                    class="d-block w-100" alt="...">
+                            </div>
+
+                            <div class="carousel-item">
+                                <img src="https://cdn.pixabay.com/photo/2017/05/04/16/37/meeting-2284501_960_720.jpg"
+                                    class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-target="#carouselExampleFade"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-target="#carouselExampleFade"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </button>
+                    </div>
+          
+
+                    <!-- Categories Start -->
+
+                    <div class="container-fluid bg-white">
+                        <div class="row  pb-3">
+                            <div class="container-fluid pt-5">
+                                <div class="row pb-3">
+                                    <div v-for="categoria in categorie" :key='categoria.title'
+                                        class="col-lg-3 col-md-4 col-sm-12 pb-1 pb-1">
+                                        <div class="cat-item d-flex p-4 flex-column border mb-4">
+
+                                            <h5 class="font-weight-semi-bold m-0">{{categoria}}</h5>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <!-- Categories End -->
+                        <div class="viewed">
+                            <div class="container-fluid offer pt-5">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="bbb_viewed_title_container ">
+                                            <h3 class="bbb_viewed_title">Recently Viewed</h3>
+                                            <div class="bbb_viewed_nav_container">
+                                                <div class="bbb_viewed_nav bbb_viewed_prev"><i class="fas fa-chevron-left"></i>
+                                                </div>
+                                                <div class="bbb_viewed_nav bbb_viewed_next"><i class="fas fa-chevron-right"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+            
+                                        <div class="bbb_viewed_slider_container">
+            
+            
+            
+                                            <div class="owl-carousel owl-theme bbb_viewed_slider">
+            
+                                                <div class="owl-item">
+                                                    <div
+                                                        class="bbb_viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                                                        <div class="bbb_viewed_image"><img
+                                                                src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560924153/alcatel-smartphones-einsteiger-mittelklasse-neu-3m.jpg"
+                                                                alt=""></div>
+                                                        <div class="bbb_viewed_content text-center">
+                                                            <div class="bbb_viewed_price">₹12225<span>₹13300</span></div>
+                                                            <div class="bbb_viewed_name"><a href="#">Alkatel Phone</a></div>
+                                                        </div>
+                                                        <ul class="item_marks">
+                                                            <li class="item_mark item_discount">-25%</li>
+                                                            <li class="item_mark item_new">new</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+            
+            
+                                                <div class="owl-item">
+                                                    <div
+                                                        class="bbb_viewed_item d-flex flex-column align-items-center justify-content-center text-center">
+                                                        <div class="bbb_viewed_image"><img
+                                                                src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560924221/51_be7qfhil.jpg"
+                                                                alt=""></div>
+                                                        <div class="bbb_viewed_content text-center">
+                                                            <div class="bbb_viewed_price">₹30079</div>
+                                                            <div class="bbb_viewed_name"><a href="#">Samsung LED</a></div>
+                                                        </div>
+                                                        <ul class="item_marks">
+                                                            <li class="item_mark item_discount">-25%</li>
+                                                            <li class="item_mark item_new">new</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+            
+            
+                                                <div class="owl-item">
+                                                    <div
+                                                        class="bbb_viewed_item d-flex flex-column align-items-center justify-content-center text-center">
+                                                        <div class="bbb_viewed_image"><img
+                                                                src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560924241/8fbb415a2ab2a4de55bb0c8da73c4172--ps.jpg"
+                                                                alt=""></div>
+                                                        <div class="bbb_viewed_content text-center">
+                                                            <div class="bbb_viewed_price">₹22250</div>
+                                                            <div class="bbb_viewed_name"><a href="#">Samsung Mobile</a></div>
+                                                        </div>
+                                                        <ul class="item_marks">
+                                                            <li class="item_mark item_discount">-25%</li>
+                                                            <li class="item_mark item_new">new</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+            
+            
+                                                <div class="owl-item">
+                                                    <div
+                                                        class="bbb_viewed_item is_new d-flex flex-column align-items-center justify-content-center text-center">
+                                                        <div class="bbb_viewed_image"><img
+                                                                src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560924275/images.jpg"
+                                                                alt=""></div>
+                                                        <div class="bbb_viewed_content text-center">
+                                                            <div class="bbb_viewed_price">₹1379</div>
+                                                            <div class="bbb_viewed_name"><a href="#">Huawei Power</a></div>
+                                                        </div>
+                                                        <ul class="item_marks">
+                                                            <li class="item_mark item_discount">-25%</li>
+                                                            <li class="item_mark item_new">new</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+            
+            
+                                                <div class="owl-item">
+                                                    <div
+                                                        class="bbb_viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                                                        <div class="bbb_viewed_image"><img
+                                                                src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560924361/21HmjI5eVcL.jpg"
+                                                                alt=""></div>
+                                                        <div class="bbb_viewed_content text-center">
+                                                            <div class="bbb_viewed_price">₹225<span>₹300</span></div>
+                                                            <div class="bbb_viewed_name"><a href="#">Sony Power</a></div>
+                                                        </div>
+                                                        <ul class="item_marks">
+                                                            <li class="item_mark item_discount">-25%</li>
+                                                            <li class="item_mark item_new">new</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+            
+                                                <div class="owl-item">
+                                                    <div
+                                                        class="bbb_viewed_item d-flex flex-column align-items-center justify-content-center text-center">
+                                                        <div class="bbb_viewed_image"><img
+                                                                src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560924241/8fbb415a2ab2a4de55bb0c8da73c4172--ps.jpg"
+                                                                alt=""></div>
+                                                        <div class="bbb_viewed_content text-center">
+                                                            <div class="bbb_viewed_price">₹13275</div>
+                                                            <div class="bbb_viewed_name"><a href="#">Speedlink Mobile</a></div>
+                                                        </div>
+                                                        <ul class="item_marks">
+                                                            <li class="item_mark item_discount">-25%</li>
+                                                            <li class="item_mark item_new">new</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Products Start -->
+                        <div class=" pt-5">
+                            <div class="text-center mb-4">
+                                <h2 class="section-title px-5"><span class="px-2">Trandy Products</span></h2>
+                            </div>
+                            <div class="row  pb-3">
+                                <div v-for="prodotto in prodotti" :key='prodotto.title'
+                                    class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                                    <div class="card product-item border-0 mb-4">
+                                        <div
+                                            class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                            <img class="img-fluid w-100" v-bind:src="prodotto.images[0]"
+                                                v-bind:alt="prodotto.title">
+                                        </div>
+                                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                            <h6 class="text-truncate mb-3">{{prodotto.title}}</h6>
+                                            <div class="d-flex justify-content-center">
+                                                <h6>{{prodotto.price}}</h6>
+                                                <h6 class="text-muted ml-2"><del>{{prodotto.price}}</del></h6>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer d-flex justify-content-between bg-light border">
+                                            <a href="" class="btn btn-sm text-dark p-0"><i
+                                                    class="fas fa-eye text-primary mr-1"></i>View
+                                                Detail</a>
+                                            <a href="" class="btn btn-sm text-dark p-0"><i
+                                                    class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Products End -->
+
+                  
+                    </div>
+
+                </div>
+
+         
+
+            </div>
+        </div>
+    </div>
+
+    <div class="px-xl-5 container-fluid pt-5">
+        <div class="row 5 pb-3">
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
+                    <h5 class="font-weight-semi-bold m-0">Quality Product</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
+                    <h5 class="font-weight-semi-bold m-0">Free Shipping</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
+                    <h5 class="font-weight-semi-bold m-0">14-Day Return</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
+                    <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Subscribe Start -->
+    <div class="container-fluid bg-secondary my-5">
+        <div class="row justify-content-md-center py-5 px-xl-5">
+            <div class="col-md-6 col-12 py-5">
+                <div class="text-center mb-2 pb-2">
+                    <h2 class="section-title px-5 mb-3"><span class="bg-secondary px-2">Stay Updated</span></h2>
+                    <p>Amet lorem at rebum amet dolores. Elitr lorem dolor sed amet diam labore at justo ipsum eirmod
+                        duo labore labore.</p>
+                </div>
+                <form action="">
+                    <div class="input-group">
+                        <input type="text" class="form-control border-white p-4" placeholder="Email Goes Here">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary px-4">Subscribe</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Subscribe End -->
+    
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
+        <div class="row px-xl-5 pt-5">
+            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                <a href="" class="text-decoration-none">
+                    <h1 class="mb-4 display-5 font-weight-semi-bold"><span
+                            class="text-primary font-weight-bold border border-white px-3 mr-1">E</span>Shopper</h1>
+                </a>
+                <p>Dolore erat dolor sit lorem vero amet. Sed sit lorem magna, ipsum no sit erat lorem et magna ipsum
+                    dolore amet erat.</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
+                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+                    <div class="col-md-4 mb-5">
+                        <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Our
+                                Shop</a>
+                            <a class="text-dark mb-2" href="detail.html"><i class="fa fa-angle-right mr-2"></i>Shop
+                                Detail</a>
+                            <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping
+                                Cart</a>
+                            <a class="text-dark mb-2" href="checkout.html"><i
+                                    class="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact
+                                Us</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Our
+                                Shop</a>
+                            <a class="text-dark mb-2" href="detail.html"><i class="fa fa-angle-right mr-2"></i>Shop
+                                Detail</a>
+                            <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping
+                                Cart</a>
+                            <a class="text-dark mb-2" href="checkout.html"><i
+                                    class="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact
+                                Us</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        <h5 class="font-weight-bold text-dark mb-4">Newsletter</h5>
+                        <form action="">
+                            <div class="form-group">
+                                <input type="text" class="form-control border-0 py-4" placeholder="Your Name"
+                                    required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control border-0 py-4" placeholder="Your Email"
+                                    required="required" />
+                            </div>
+                            <div>
+                                <button class="btn btn-primary btn-block border-0 py-3" type="submit">Subscribe
+                                    Now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row border-top border-light mx-xl-5 py-4">
+            <div class="col-md-6 px-xl-0">
+                <p class="mb-md-0 text-center text-md-left text-dark">
+                    &copy; <a class="text-dark font-weight-semi-bold" href="#">Your Site Name</a>. All Rights Reserved.
+                    Designed
+                    by
+                    <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com">HTML Codex</a>
+                </p>
+            </div>
+            <div class="col-md-6 px-xl-0 text-center text-md-right">
+                <img class="img-fluid" src="img/payments.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer End -->
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="/iniziale/bootstrap-shop-template/lib copy/easing/easing.min.js"></script>
+    <script src="/iniziale/bootstrap-shop-template/lib copy/owlcarousel/owl.carousel.min.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/iniziale/bootstrap-shop-template/js/main.js"></script>
+
+    <script src="/iniziale/bootstrap-shop-template/main.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+
+
+    <!-- Back to Top -->
+
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+
+
+
+</body>
+
+
+</html>
